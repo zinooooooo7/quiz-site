@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>과학 문제 풀기</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>과학 문제 풀기</h1>
+        <form id="quiz-form">
+            <div class="question-container">
+                <div class="question">
+                    <p>1. 물의 화학식은 무엇인가요?</p>
+                    <label><input type="radio" name="question1" value="0"> H2O</label><br>
+                    <label><input type="radio" name="question1" value="1"> CO2</label><br>
+                    <label><input type="radio" name="question1" value="2"> O2</label><br>
+                    <label><input type="radio" name="question1" value="3"> N2</label>
+                </div>
+                <div class="question">
+                    <p>2. 지구의 공전 주기는 몇 일인가요?</p>
+                    <label><input type="radio" name="question2" value="0"> 24시간</label><br>
+                    <label><input type="radio" name="question2" value="1"> 30일</label><br>
+                    <label><input type="radio" name="question2" value="2"> 365일</label><br>
+                    <label><input type="radio" name="question2" value="3"> 100일</label>
+                </div>
+                <div class="question">
+                    <p>3. 태양계의 가장 큰 행성은 무엇인가요?</p>
+                    <label><input type="radio" name="question3" value="0"> 지구</label><br>
+                    <label><input type="radio" name="question3" value="1"> 화성</label><br>
+                    <label><input type="radio" name="question3" value="2"> 목성</label><br>
+                    <label><input type="radio" name="question3" value="3"> 금성</label>
+                </div>
+                <div class="question">
+                    <p>4. 전기를 도체에서 이동시키는 것은 무엇인가요?</p>
+                    <label><input type="radio" name="question4" value="0"> 양성자</label><br>
+                    <label><input type="radio" name="question4" value="1"> 중성자</label><br>
+                    <label><input type="radio" name="question4" value="2"> 전자</label><br>
+                    <label><input type="radio" name="question4" value="3"> 원자핵</label>
+                </div>
+            </div>
+            <button type="button" id="submit-btn">제출</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script src="script-science.js"></script>
+</body>
+</html>
