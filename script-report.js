@@ -38,8 +38,9 @@ userAnswers.slice(0, 5).forEach(subject => {
                             <p>틀린 문제: ${subject.incorrect}개</p>`;
 
     subject.answers.forEach((answer, index) => {
+        const questionNumber = index + 1; // 질문 번호를 1부터 시작
         const correctAnswer = answer === null ? '답변 없음' : answer;
-        subjectDiv.innerHTML += `<p>문제 ${index + 1}: ${correctAnswer}</p>`;
+        subjectDiv.innerHTML += `<p>문제 ${questionNumber}: ${correctAnswer}</p>`;
     });
 
     const feedback = document.createElement('p');
