@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영어 문제 풀기</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>영어 문제 풀기</h1>
+        <form id="quiz-form">
+            <div class="question-container">
+                <div class="question">
+                    <p>1. What is the capital of France?</p>
+                    <label><input type="radio" name="question1" value="0"> Berlin</label><br>
+                    <label><input type="radio" name="question1" value="1"> Madrid</label><br>
+                    <label><input type="radio" name="question1" value="2"> Rome</label><br>
+                    <label><input type="radio" name="question1" value="3"> Paris</label>
+                </div>
+                <div class="question">
+                    <p>2. How do you say '사과' in English?</p>
+                    <label><input type="radio" name="question2" value="0"> Banana</label><br>
+                    <label><input type="radio" name="question2" value="1"> Grape</label><br>
+                    <label><input type="radio" name="question2" value="2"> Apple</label><br>
+                    <label><input type="radio" name="question2" value="3"> Orange</label>
+                </div>
+                <div class="question">
+                    <p>3. What is the past tense of 'go'?</p>
+                    <label><input type="radio" name="question3" value="0"> Goed</label><br>
+                    <label><input type="radio" name="question3" value="1"> Went</label><br>
+                    <label><input type="radio" name="question3" value="2"> Gone</label><br>
+                    <label><input type="radio" name="question3" value="3"> Going</label>
+                </div>
+                <div class="question">
+                    <p>4. What is the plural form of 'child'?</p>
+                    <label><input type="radio" name="question4" value="0"> Childs</label><br>
+                    <label><input type="radio" name="question4" value="1"> Childes</label><br>
+                    <label><input type="radio" name="question4" value="2"> Children</label><br>
+                    <label><input type="radio" name="question4" value="3"> Childrens</label>
+                </div>
+            </div>
+            <button type="button" id="submit-btn">제출</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script src="script-english.js"></script>
+</body>
+</html>
