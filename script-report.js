@@ -65,7 +65,52 @@ const summaryFeedback = document.createElement('p');
 summaryFeedback.innerHTML = `전체 맞춘 문제: ${totalCorrect}개<br>전체 틀린 문제: ${totalIncorrect}개`;
 summaryContainer.appendChild(summaryFeedback);
 
-localStorage.removeItem('userAnswers'); // 결과 표시 후 데이터 삭제
+// 서버로 결과 전송
+async function submitResults(subject, correct, incorrect, answers) {
+    const result = {
+        subject: subject,
+        correct: correct,
+        incorrect: incorrect,
+        answers: answers,
+        date: new Date().toISOString()
+    };
+
+    try {
+        const response = await fetch('/saveResults', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(result)
+        });
+        if (!response.ok) {
+            throw new Error('서버에 결과 전송 실패');
+        }
+        const data = await response.json();
+        console.log('결과가 성공적으로 전송되었습니다:', data);
+    } catch (error) {
+        console.error('결과 전송 중 오류 발생:', error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    userAnswers.forEach(answer => {
+        submitResults(answer.subject, answer.correct, answer.incorrect, answer.answers);
+    });
+    localStorage.removeItem('userAnswers'); // 결과 전송 후 데이터 삭제
+});
+
+// 결과 다운로드 기능 추가
+document.getElementById('download-btn').addEventListener('click', () => {
+    const blob = new Blob([JSON.stringify(userAnswers, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'quizResults.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+});
 
 window.onbeforeunload = () => {
     localStorage.removeItem('userAnswers');
