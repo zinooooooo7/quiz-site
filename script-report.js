@@ -65,17 +65,6 @@ userAnswers.slice(0, 5).forEach(subject => {
 const summaryFeedback = document.createElement('p');
 summaryFeedback.innerHTML = `전체 맞춘 문제: ${totalCorrect}개<br>전체 틀린 문제: ${totalIncorrect}개`;
 summaryContainer.appendChild(summaryFeedback);
-function downloadCSV() {
-    let csvContent = "data:text/csv;charset=utf-8,";
-    csvContent += "과목,맞춘 문제,틀린 문제,질문 번호,사용자 답변\n";
-    
-    userAnswers.slice(0, 5).forEach(subject => {
-        subject.answers.forEach((answer, index) => {
-            const questionNumber = index + 1; // 질문 번호를 1부터 시작
-            const userAnswer = answer === null ? '답변 없음' : answer;
-            csvContent += `${subject.subject},${subject.correct},${subject.incorrect},${questionNumber},${userAnswer}\n`;
-        });
-    });
 
 // 서버로 결과 전송
 async function submitResults(subject, correct, incorrect, answers) {
