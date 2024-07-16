@@ -112,5 +112,3 @@ document.getElementById('download-btn').addEventListener('click', () => {
     a.click();
     document.body.removeChild(a);
 });
-
-};
