@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", function () {
 const userAnswers = JSON.parse(localStorage.getItem('userAnswers')) || [];
 const reportContainer = document.getElementById('report-container');
 const summaryContainer = document.getElementById('summary');
@@ -101,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.removeItem('userAnswers'); // 결과 전송 후 데이터 삭제
 });
 
-// 결과 다운로드 기능 추가
+    // 결과 다운로드 기능 추가
     downloadBtn.addEventListener('click', () => {
         const wb = XLSX.utils.book_new();
         userAnswers.forEach(subject => {
@@ -118,7 +119,8 @@ document.addEventListener('DOMContentLoaded', () => {
         XLSX.writeFile(wb, 'quizResults.xlsx');
     });
 
-window.onbeforeunload = () => {
-    localStorage.removeItem('userAnswers');
-    window.location.href = 'index.html';
-};
+    window.onbeforeunload = () => {
+        localStorage.removeItem('userAnswers');
+        window.location.href = 'index.html';
+    };
+});
