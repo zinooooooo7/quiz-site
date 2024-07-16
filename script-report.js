@@ -6,27 +6,27 @@ let totalCorrect = 0;
 let totalIncorrect = 0;
 
 const feedbackMessages = {
-    Korean: {
+    국어: {
         good: '국어 과목을 잘 이해하고 계시네요!',
         average: '국어 과목에서 나쁘지 않은 성적입니다. 좀 더 연습하세요.',
         bad: '국어 과목에서 많은 문제를 틀리셨네요. 문법과 독해 능력을 더 강화하세요.'
     },
-    Math: {
+    수학: {
         good: '수학 과목을 잘 이해하고 계시네요!',
         average: '수학 과목에서 나쁘지 않은 성적입니다. 좀 더 연습하세요.',
         bad: '수학 과목에서 많은 문제를 틀리셨네요. 기본 계산과 문제 해결 능력을 더 연습하세요.'
     },
-    English: {
+    영어: {
         good: '영어 과목을 잘 이해하고 계시네요!',
         average: '영어 과목에서 나쁘지 않은 성적입니다. 좀 더 연습하세요.',
         bad: '영어 과목에서 많은 문제를 틀리셨네요. 단어와 문법을 더 공부하세요.'
     },
-    Social: {
+    사회: {
         good: '사회 과목을 잘 이해하고 계시네요!',
         average: '사회 과목에서 나쁘지 않은 성적입니다. 좀 더 연습하세요.',
         bad: '사회 과목에서 많은 문제를 틀리셨네요. 역사와 지리 지식을 더 확장하세요.'
     },
-    Science: {
+    과학: {
         good: '과학 과목을 잘 이해하고 계시네요!',
         average: '과학 과목에서 나쁘지 않은 성적입니다. 좀 더 연습하세요.',
         bad: '과학 과목에서 많은 문제를 틀리셨네요. 기본 개념과 원리를 더 공부하세요.'
@@ -112,8 +112,3 @@ document.getElementById('download-btn').addEventListener('click', () => {
     a.click();
     document.body.removeChild(a);
 });
-
-    });
-
-
-);
