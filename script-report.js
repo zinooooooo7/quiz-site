@@ -39,9 +39,9 @@ userAnswers.slice(0, 5).forEach(subject => {
 
     const subjectDiv = document.createElement('div');
     subjectDiv.classList.add('subject-report');
-    subjectDiv.innerHTML = <h2>${subject.subject}</h2>
-                                <p>맞춘 문제: ${subject.correct}개<br>
-                                틀린 문제: ${subject.incorrect}개</p>;
+    subjectDiv.innerHTML = `<h2>${subject.subject}</h2>
+                                <p>맞춘 문제: ${subject.correct}개</p>
+                                <p>틀린 문제: ${subject.incorrect}개</p>`;
 
     subject.answers.forEach((answer, index) => {
         const questionNumber = index + 1; // 질문 번호를 1부터 시작
