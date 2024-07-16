@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", function () {
 const userAnswers = JSON.parse(localStorage.getItem('userAnswers')) || [];
 const reportContainer = document.getElementById('report-container');
 const summaryContainer = document.getElementById('summary');
@@ -102,18 +103,24 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // 결과 다운로드 기능 추가
-document.getElementById('download-btn').addEventListener('click', () => {
-    const blob = new Blob([JSON.stringify(userAnswers, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'quizResults.json';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-});
+    downloadBtn.addEventListener('click', () => {
+        const wb = XLSX.utils.book_new();
+        userAnswers.forEach(subject => {
+            const wsData = [['문제 번호', '질문', '당신의 답', '정답']];
+            subject.answers.forEach((answer, index) => {
+                const question = answer.question;
+                const selectedOption = answer.options[answer.selectedOption];
+                const correctOption = answer.options[answer.correctOption];
+                wsData.push([index + 1, question, selectedOption, correctOption]);
+            });
+            const ws = XLSX.utils.aoa_to_sheet(wsData);
+            XLSX.utils.book_append_sheet(wb, ws, subject.subject);
+        });
+        XLSX.writeFile(wb, 'quizResults.xlsx');
+    });
 
-window.onbeforeunload = () => {
-    localStorage.removeItem('userAnswers');
-    window.location.href = 'index.html';
-};
+    window.onbeforeunload = () => {
+        localStorage.removeItem('userAnswers');
+        window.location.href = 'index.html';
+    };
+})
