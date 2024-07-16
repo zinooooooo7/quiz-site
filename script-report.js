@@ -46,7 +46,8 @@ userAnswers.slice(0, 5).forEach(subject => {
     subject.answers.forEach((answer, index) => {
         const questionNumber = index + 1; // 질문 번호를 1부터 시작
         const correctAnswer = answer === null ? '답변 없음' : answer;
-        subjectDiv.innerHTML += `문제 ${questionNumber++}: ${correctAnswer}`;
+        subjectDiv.innerHTML += `문제 ${questionNumber}: ${correctAnswer}`;
+        questionNumber++;
     });
 
     const feedback = document.createElement('p');
