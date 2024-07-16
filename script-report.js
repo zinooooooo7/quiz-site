@@ -1,4 +1,3 @@
-document.addEventListener("DOMContentLoaded", function () {
 const userAnswers = JSON.parse(localStorage.getItem('userAnswers')) || [];
 const reportContainer = document.getElementById('report-container');
 const summaryContainer = document.getElementById('summary');
@@ -116,8 +115,5 @@ document.getElementById('download-btn').addEventListener('click', () => {
 
     });
 
-    window.onbeforeunload = () => {
-        localStorage.removeItem('userAnswers');
-        window.location.href = 'index.html';
-    };
-});
+
+);
