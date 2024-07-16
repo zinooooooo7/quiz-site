@@ -103,16 +103,17 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // 결과 다운로드 기능 추가
-    downloadBtn.addEventListener('click', () => {
-        const resultDetails = document.getElementById('report-container').innerHTML;
-        const blob = new Blob([resultDetails], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'quizResults.xlsx';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
+document.getElementById('download-btn').addEventListener('click', () => {
+    const blob = new Blob([JSON.stringify(userAnswers, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'quizResults.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+});
+
     });
 
     window.onbeforeunload = () => {
