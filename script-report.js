@@ -39,14 +39,14 @@ userAnswers.slice(0, 5).forEach(subject => {
 
     const subjectDiv = document.createElement('div');
     subjectDiv.classList.add('subject-report');
-    subjectDiv.innerHTML = `<h2>${subject.subject}</h2>
+    subjectDiv.innerHTML = <h2>${subject.subject}</h2>
                             <p>맞춘 문제: ${subject.correct}개</p>
-                            <p>틀린 문제: ${subject.incorrect}개</p>`;
+                            <p>틀린 문제: ${subject.incorrect}개</p>;
 
     subject.answers.forEach((answer, index) => {
         const questionNumber = index + 1; // 질문 번호를 1부터 시작
         const correctAnswer = answer === null ? '답변 없음' : answer;
-        subjectDiv.innerHTML += `<p>문제 ${questionNumber}: ${correctAnswer}</p>`;
+        subjectDiv.innerHTML += <p>문제 ${questionNumber}: ${correctAnswer}</p>;
     });
 
     const feedback = document.createElement('p');
@@ -63,7 +63,7 @@ userAnswers.slice(0, 5).forEach(subject => {
 });
 
 const summaryFeedback = document.createElement('p');
-summaryFeedback.innerHTML = `전체 맞춘 문제: ${totalCorrect}개<br>전체 틀린 문제: ${totalIncorrect}개`;
+summaryFeedback.innerHTML = 전체 맞춘 문제: ${totalCorrect}개<br>전체 틀린 문제: ${totalIncorrect}개;
 summaryContainer.appendChild(summaryFeedback);
 
 // 서버로 결과 전송
@@ -112,3 +112,8 @@ document.getElementById('download-btn').addEventListener('click', () => {
     a.click();
     document.body.removeChild(a);
 });
+
+window.onbeforeunload = () => {
+    localStorage.removeItem('userAnswers');
+    window.location.href = 'index.html';
+};
