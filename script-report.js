@@ -39,14 +39,14 @@ userAnswers.slice(0, 5).forEach(subject => {
 
     const subjectDiv = document.createElement('div');
     subjectDiv.classList.add('subject-report');
-    subjectDiv.innerHTML = `<h2>${subject.subject}</h2>
-                                <p>맞춘 문제: ${subject.correct}개</p>
-                                <p>틀린 문제: ${subject.incorrect}개</p>`;
+    subjectDiv.innerHTML = `${subject.subject}
+                                맞춘 문제: ${subject.correct}개
+                                틀린 문제: ${subject.incorrect}개`;
 
     subject.answers.forEach((answer, index) => {
         const questionNumber = index + 1; // 질문 번호를 1부터 시작
         const correctAnswer = answer === null ? '답변 없음' : answer;
-        subjectDiv.innerHTML = `<p>문제 ${questionNumber}: ${correctAnswer}</p>`;
+        subjectDiv.innerHTML = `문제 ${questionNumber}: ${correctAnswer}`;
     });
 
     const feedback = document.createElement('p');
