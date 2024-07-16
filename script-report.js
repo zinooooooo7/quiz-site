@@ -114,7 +114,4 @@ document.getElementById('download-btn').addEventListener('click', () => {
     document.body.removeChild(a);
 });
 
-window.onbeforeunload = () => {
-    localStorage.removeItem('userAnswers');
-    window.location.href = 'index.html';
-}};
+};
