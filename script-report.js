@@ -1,4 +1,3 @@
-document.addEventListener("DOMContentLoaded", function () {
 const userAnswers = JSON.parse(localStorage.getItem('userAnswers')) || [];
 const reportContainer = document.getElementById('report-container');
 const summaryContainer = document.getElementById('summary');
@@ -7,27 +6,27 @@ let totalCorrect = 0;
 let totalIncorrect = 0;
 
 const feedbackMessages = {
-    국어: {
+    Korean: {
         good: '국어 과목을 잘 이해하고 계시네요!',
         average: '국어 과목에서 나쁘지 않은 성적입니다. 좀 더 연습하세요.',
         bad: '국어 과목에서 많은 문제를 틀리셨네요. 문법과 독해 능력을 더 강화하세요.'
     },
-    수학: {
+    Math: {
         good: '수학 과목을 잘 이해하고 계시네요!',
         average: '수학 과목에서 나쁘지 않은 성적입니다. 좀 더 연습하세요.',
         bad: '수학 과목에서 많은 문제를 틀리셨네요. 기본 계산과 문제 해결 능력을 더 연습하세요.'
     },
-    영어: {
+    English: {
         good: '영어 과목을 잘 이해하고 계시네요!',
         average: '영어 과목에서 나쁘지 않은 성적입니다. 좀 더 연습하세요.',
         bad: '영어 과목에서 많은 문제를 틀리셨네요. 단어와 문법을 더 공부하세요.'
     },
-    사회: {
+    SocialStudy: {
         good: '사회 과목을 잘 이해하고 계시네요!',
         average: '사회 과목에서 나쁘지 않은 성적입니다. 좀 더 연습하세요.',
         bad: '사회 과목에서 많은 문제를 틀리셨네요. 역사와 지리 지식을 더 확장하세요.'
     },
-    과학: {
+    Science: {
         good: '과학 과목을 잘 이해하고 계시네요!',
         average: '과학 과목에서 나쁘지 않은 성적입니다. 좀 더 연습하세요.',
         bad: '과학 과목에서 많은 문제를 틀리셨네요. 기본 개념과 원리를 더 공부하세요.'
@@ -102,25 +101,19 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.removeItem('userAnswers'); // 결과 전송 후 데이터 삭제
 });
 
-    // 결과 다운로드 기능 추가
-    downloadBtn.addEventListener('click', () => {
-        const wb = XLSX.utils.book_new();
-        userAnswers.forEach(subject => {
-            const wsData = [['문제 번호', '질문', '당신의 답', '정답']];
-            subject.answers.forEach((answer, index) => {
-                const question = answer.question;
-                const selectedOption = answer.options[answer.selectedOption];
-                const correctOption = answer.options[answer.correctOption];
-                wsData.push([index + 1, question, selectedOption, correctOption]);
-            });
-            const ws = XLSX.utils.aoa_to_sheet(wsData);
-            XLSX.utils.book_append_sheet(wb, ws, subject.subject);
-        });
-        XLSX.writeFile(wb, 'quizResults.xlsx');
-    });
-
-    window.onbeforeunload = () => {
-        localStorage.removeItem('userAnswers');
-        window.location.href = 'index.html';
-    };
+// 결과 다운로드 기능 추가
+document.getElementById('download-btn').addEventListener('click', () => {
+    const blob = new Blob([JSON.stringify(userAnswers, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'quizResults.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
 });
+
+window.onbeforeunload = () => {
+    localStorage.removeItem('userAnswers');
+    window.location.href = 'index.html';
+};
